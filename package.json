@@ -21,5 +21,9 @@
   },
   "devDependencies": {
     "prettier": "^2.2.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 120
   }
 }
