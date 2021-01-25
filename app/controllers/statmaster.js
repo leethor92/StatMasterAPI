@@ -1,21 +1,27 @@
 'use strict';
 
 const Statmaster = {
-  index: {
+  home: {
     handler: function(request, h) {
-      return h.view('main', {title: 'Welcome to Statmaster'});
+      return h.view('home', { title: 'Add a Team' });
     }
   },
-  signup: {
+  report: {
     handler: function(request, h) {
-      return h.view('signup', {title: 'Sign up for Statmaster'});
+      return h.view('report', {
+        title: 'List of teams',
+        teams: this.teams
+      });
     }
   },
-  login: {
+  addTeam: {
     handler: function(request, h) {
-      return h.view('login', {title: 'Login to Statmaster'});
+      const data = request.payload;
+      this.teams.push(data);
+      return h.redirect('/report');
     }
   }
-}
+};
+
 
 module.exports = Statmaster;

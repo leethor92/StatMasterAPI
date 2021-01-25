@@ -7,6 +7,10 @@ const server = Hapi.server({
   host: 'localhost'
 });
 
+server.bind({
+  teams: [],
+});
+
 async function init() {
   await server.register(require('inert'));
   await server.register(require('vision'));
@@ -17,7 +21,10 @@ async function init() {
     },
     relativeTo: __dirname,
     path: './app/views',
-    isCached: false
+    layoutPath: './app/views/layouts',
+    partialsPath: './app/views/partials',
+    layout: true,
+    isCached: false,
   });
 
   server.route(require('./routes'));
