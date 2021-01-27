@@ -17,6 +17,8 @@ const Statmaster = {
   addTeam: {
     handler: function(request, h) {
       const data = request.payload;
+      var memberEmail = request.auth.credentials.id;
+      data.member = this.users[memberEmail];
       this.teams.push(data);
       return h.redirect('/report');
     }

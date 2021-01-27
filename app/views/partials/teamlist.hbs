@@ -8,12 +8,14 @@
                 <thead>
                 <tr>
                     <th>Team Name</th>
+                    <th>Added By</th>
                 </tr>
                 </thead>
                 <tbody>
                 {{#each teams}}
                     <tr>
                         <td> {{name}} </td>
+                        <td> {{member.firstName}} {{member.lastName}} </td>
                     </tr>
                 {{/each}}
                 </tbody>

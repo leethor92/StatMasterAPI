@@ -8,12 +8,16 @@ const server = Hapi.server({
 });
 
 server.bind({
-  teams: [],
+  users: [],
+  teams: []
 });
 
 async function init() {
+  await server.register(require('hapi-auth-cookie'));
   await server.register(require('inert'));
   await server.register(require('vision'));
+  require('dotenv').config();
+
 
   server.views({
     engines: {
@@ -25,6 +29,20 @@ async function init() {
     partialsPath: './app/views/partials',
     layout: true,
     isCached: false,
+  });
+
+  server.auth.strategy('standard', 'cookie', {
+    cookie: {
+      password: process.env.cookie_password,
+      isSecure: false,
+      ttl: 24 * 60 * 60 * 1000,
+    },
+    redirectTo: '/'
+  });
+
+  server.auth.default({
+    mode: 'required',
+    strategy: 'standard',
   });
 
   server.route(require('./routes'));
