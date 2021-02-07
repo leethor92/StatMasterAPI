@@ -8,6 +8,7 @@
                 <thead>
                 <tr>
                     <th>Team Name</th>
+                    <th>Manager</th>
                     <th>Added By</th>
                 </tr>
                 </thead>
@@ -15,7 +16,8 @@
                 {{#each teams}}
                     <tr>
                         <td> {{name}} </td>
-                        <td> {{member.firstName}} {{member.lastName}} </td>
+                        <td> {{manager}} </td>
+                        <td> {{user.firstName}} {{user.lastName}} </td>
                     </tr>
                 {{/each}}
                 </tbody>

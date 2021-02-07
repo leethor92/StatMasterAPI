@@ -7,6 +7,14 @@ const server = Hapi.server({
   host: 'localhost'
 });
 
+const dotenv = require('dotenv');
+
+const result = dotenv.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
+
 require('./app/models/db');
 
 async function init() {
