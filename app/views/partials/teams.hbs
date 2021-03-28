@@ -1,0 +1,16 @@
+<section class="ui raised segment">
+    <table class="ui celled table segment">
+        <tr>
+            <th>Team Name</th>
+            <th>Added By</th>
+        </tr>
+        <tbody>
+        {{#each teams}}
+            <tr>
+                <td><a class="header" a href="/team/{{id}}">{{name}}</a> </td>
+                <td> {{user.firstName}} {{user.lastName}} </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</section>
